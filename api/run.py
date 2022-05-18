@@ -6,7 +6,6 @@ from datetime import date
 import calendar
 
 from http.server import BaseHTTPRequestHandler
-from datetime import datetime
 
 
 class handler(BaseHTTPRequestHandler):
