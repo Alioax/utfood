@@ -16,6 +16,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
 
+        print('I raaaaan!!!!')
         cookies = {
             '__RequestVerificationToken': '2CVOfIo4TxTJ05ZpuoFpc43B7_np5prStM6q__qY1BR6j9Mxgk4UN174ZVBi6pX1S7AmhULkfewSy_dBAmtfnDfNGMHbn70R54a3K3T0ogs1',
         }
