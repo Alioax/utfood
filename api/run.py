@@ -167,5 +167,5 @@ class handler(BaseHTTPRequestHandler):
         # r = requests.get(url, params=payload)
         # print(r)
         self.wfile.write(
-            str(str(Today.lunch0).encode()))
+            str(str('غذا امروز ای هه: ' + Today.lunch0).encode()))
         return
