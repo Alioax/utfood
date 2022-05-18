@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import datetime
 from datetime import date
 import calendar
+
 from http.server import BaseHTTPRequestHandler
 from datetime import datetime
 
@@ -73,14 +74,10 @@ class handler(BaseHTTPRequestHandler):
         response = requests.post('http://canmeal.ut.ac.ir/Reserves/GetReservePage',
                                  cookies=cookies, headers=headers, data=data, verify=False)
         print(response)
-        if response.status_code == 200:
-            with open('foodlist.html', 'w', encoding='utf-8') as f:
-                f.write(response.text)
 
-        with open('foodlist.html', 'r', encoding='utf-8') as f:
-            soup = BeautifulSoup(f, 'html.parser')
-            foods = soup.find_all(
-                attrs={"style": "display: flex; flex-direction: row; flex-wrap: wrap; clear: both;"})
+        soup = BeautifulSoup(response.text, 'html.parser')
+        foods = soup.find_all(
+            attrs={"style": "display: flex; flex-direction: row; flex-wrap: wrap; clear: both;"})
         lunch = foods[0].findAll(id='MealDiv')
         dinner = foods[1].findAll(id='MealDiv')
 
@@ -120,16 +117,7 @@ class handler(BaseHTTPRequestHandler):
                     1].contents[0].strip()
             except:
                 dinner1 = None
-
             return(day(date, lunch0, lunch1, dinner0, dinner1))
-
-        # Saturday = create_day(0)
-        # Sunday = create_day(1)
-        # Monday = create_day(2)
-        # Tuesday = create_day(3)
-        # Wednesday = create_day(4)
-        # Thursday = create_day(5)
-        # Friday = create_day(6)
 
         datetime.datetime.today().weekday()
         curr_date = date.today()
@@ -138,46 +126,46 @@ class handler(BaseHTTPRequestHandler):
 
         Today = create_day(curr_day)
 
-        # bot_token = '5324292612:AAEGKc3LvTY5bAmwR4OcYnRXIjhchWPQy8s'
-        # channel_id = '-1001651126277'
+        bot_token = '5324292612:AAEGKc3LvTY5bAmwR4OcYnRXIjhchWPQy8s'
+        channel_id = '-1001651126277'
 
-        # food_emoji = random.choice(['🍪', '🍫', '🍉', '🥦', '🍧', '🍰', ])
-        # post_emoji = random.choice(['🍪', '🍫', '🍉', '🥦', '🍧', '🍰', ])
+        food_emoji = random.choice(['🍪', '🍫', '🍉', '🥦', '🍧', '🍰', ])
+        post_emoji = random.choice(['🍪', '🍫', '🍉', '🥦', '🍧', '🍰', ])
 
-        # has_lunch = True if Today.lunch0 or Today.lunch1 is not None else False
-        # has_dinner = True if Today.dinner0 or Today.dinner1 is not None else False
-        # has_food = has_lunch or has_dinner
+        has_lunch = True if Today.lunch0 or Today.lunch1 is not None else False
+        has_dinner = True if Today.dinner0 or Today.dinner1 is not None else False
+        has_food = has_lunch or has_dinner
 
-        # morning_text = food_emoji + ' ' + f'صبح بخیر'
-        # skip_line = '\n'
-        # end_text = Today.date + skip_line + f'{post_emoji} لذت ببرید!'
+        morning_text = food_emoji + ' ' + f'صبح بخیر'
+        skip_line = '\n'
+        end_text = Today.date + skip_line + f'{post_emoji} لذت ببرید!'
 
-        # lunch_text = ''
-        # if Today.lunch0 is not None:
-        #     lunch_text = '\n\n' + '*ناهار امروز:*' + \
-        #         skip_line + f'- {Today.lunch0}'
-        #     if Today.lunch1 is not None:
-        #         lunch_text = lunch_text + skip_line + f'- {Today.lunch1}'
+        lunch_text = ''
+        if Today.lunch0 is not None:
+            lunch_text = '\n\n' + '*ناهار امروز:*' + \
+                skip_line + f'- {Today.lunch0}'
+            if Today.lunch1 is not None:
+                lunch_text = lunch_text + skip_line + f'- {Today.lunch1}'
 
-        # dinner_text = ''
-        # if Today.dinner0 is not None:
-        #     dinner_text = '\n\n' + '*شام امروز:*' + \
-        #         skip_line + f'- {Today.dinner0}'
-        #     if Today.dinner1 is not None:
-        #         dinner_text = dinner_text + skip_line + f'- {Today.dinner1}'
+        dinner_text = ''
+        if Today.dinner0 is not None:
+            dinner_text = '\n\n' + '*شام امروز:*' + \
+                skip_line + f'- {Today.dinner0}'
+            if Today.dinner1 is not None:
+                dinner_text = dinner_text + skip_line + f'- {Today.dinner1}'
 
-        # text = morning_text + lunch_text + dinner_text + skip_line * 3 + end_text
+        text = morning_text + lunch_text + dinner_text + skip_line * 3 + end_text
 
-        # no_food_text = morning_text + 2 * skip_line + \
-        #     'امروز سلف غذا سرو نمی کند' + skip_line * 2 + Today.date
+        no_food_text = morning_text + 2 * skip_line + \
+            'امروز سلف غذا سرو نمی کند' + skip_line * 2 + Today.date
 
-        # url = "https://api.telegram.org/bot" + \
-        #     str(bot_token) + "/" + str('sendMessage')
-        # payload = {'chat_id': channel_id,
-        #            'text': (text.replace('-', '\-').replace('+', '\+').replace('!', '\!').replace(')', '\)').replace('(', '\(').replace('  ', ' ') if has_food else no_food_text.replace('-', '\-').replace('+', '\+').replace('!', '\!').replace(')', '\)').replace('(', '\(').replace('  ', ' ')), 'parse_mode': 'MarkdownV2'}
+        url = "https://api.telegram.org/bot" + \
+            str(bot_token) + "/" + str('sendMessage')
+        payload = {'chat_id': channel_id,
+                   'text': (text.replace('-', '\-').replace('+', '\+').replace('!', '\!').replace(')', '\)').replace('(', '\(').replace('  ', ' ') if has_food else no_food_text.replace('-', '\-').replace('+', '\+').replace('!', '\!').replace(')', '\)').replace('(', '\(').replace('  ', ' ')), 'parse_mode': 'MarkdownV2'}
 
-        # r = requests.get(url, params=payload)
-
+        r = requests.get(url, params=payload)
+        print(r)
         self.wfile.write(
             str(Today.lunch0))
         return
