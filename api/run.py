@@ -45,9 +45,11 @@ class handler(BaseHTTPRequestHandler):
         sessionID = response.cookies['ASP.NET_SessionId']
 
         cookies = {
-            '__RequestVerificationToken': '2CVOfIo4TxTJ05ZpuoFpc43B7_np5prStM6q__qY1BR6j9Mxgk4UN174ZVBi6pX1S7AmhULkfewSy_dBAmtfnDfNGMHbn70R54a3K3T0ogs1',
-            'DGAUTH': 'AAD5758C7C2CD5718D4891ED7F60EB01FE68E853B684A82F05F48916898E06B49FA065F1A277D355C8840BA3A4047C2FC68B2A286EF8859862FD5D73A56CEA2A382828465D5C535C3C40AFEA93863B024F57E87198B599977AE23B078C4CC96A',
-            '.AspNet.ApplicationCookie': '32lxAa3Irq2EHESlcC-O_Nf0jn-6XChZc6fGw9ABpNgSqlgayokjpo7FsxoA-dciDn5aD8bm7QLSmfoRGsIFd7tHQj2epsbvvIM5VvSIi1D5g3dwEDXrvEevramaES6pxdF8MFToXE7dIff4Xuq-mXI7qxGZcHJqPmTxQ5DXuHdCL-1dmiJ_4cXD0twygvam6C_Wx9ItdKn0Aqg_cxIrXfAn5CthDahAkNmne-g1D8BH9XiHrxBpZVzigJfVubUHozz42rzjCRWKO_u7F9sGbRNB3m4Z3OM8UqPau1A0_ZLJ7jcyzsp4ZALWeS-sTKmwKc5HC3Ty2DPqi3puhw9n0DhQ9Ys7jjy7QhY0mHNtam2OSdjljk7Q5U9ieAAQCuVX4HxJwAU4lsyqWutoWnOOiGn6TVUCNomvJRpjrXYItS7E1HYA4PKO4I_hn8O98M32keGD7X57D6fAKYmonJnuGspaxmAlGvzVVfKQmYINtaM',
+            '_ga': 'GA1.1.941324748.1652457584',
+            '_ga_9ZN47TBBR4': 'GS1.1.1652806602.4.1.1652807234.0',
+            '__RequestVerificationToken': '0UcDkwTfhmkW_C_kqLEji4vHxJGsIppya2S8xi_bSsUff0-kNK3u3ZGzBLEPzVS2s61lrQz2St8shWUvPmZtjDuvW8Z1imWXWtATRugp1T81',
+            'DGAUTH': '2AF89342AB5C3A1C531E373E5648A70AE169B95DCAE4B8675C631AE251F77227A4738734FA41C948E7E390B56B823A8703BAB5E1F5FC5DE00D309993CF031266A23603CAA244D2103272F47EDF40D9818E9A0EB1D9CF1A722DDFE57E9D42B59C',
+            '.AspNet.ApplicationCookie': 'DSCcAlIDkAnYrF1jBLqJYXY3KQ2nfnWQ_mjSHP8c_mPiREQEb1RR86TmOLayimlm4_NyaRKV0vtoCZQoAf5tOKU-58B6S5zm0rDDX4FdAR0WwnqhJbAFbWVUDcvW0x0TXOIpT8N18ZdAk07HuoWoBqD6_kbKzab0IgaGKG1790kJs-b-Ifbu0PJP7dKL8QiJ4bQX4UsXQy59UWfIsTRu7SwSjPbjKhhDaE26IlFUtIIp2d26eUenVJlelAiRXd90_cnzw9XkozH1Iv5ip21CYP4FxYj3tGA4EWez7pqdju93noKowoA130scTsF3_QS6i83yiM4ilQPwxVExgFer2iFS3rarbU8e49XKKUcTMgdkGPX-vwQNn3o1HQMjt7GhZLOwKM_bCClH-rfK1ABChWDECOnLHJ1xkd983clCoizGYjiGSIwXnyXpLwCwTDw_cSi4_7XVpV9LjqQhEHzThZ6dC7igSdNy0bab5W5-r2I',
             'ASP.NET_SessionId': f'{sessionID}',
             'fn': '',
         }
@@ -58,10 +60,10 @@ class handler(BaseHTTPRequestHandler):
             'Connection': 'keep-alive',
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             # Requests sorts cookies= alphabetically
-            # 'Cookie': '__RequestVerificationToken=2CVOfIo4TxTJ05ZpuoFpc43B7_np5prStM6q__qY1BR6j9Mxgk4UN174ZVBi6pX1S7AmhULkfewSy_dBAmtfnDfNGMHbn70R54a3K3T0ogs1; DGAUTH=AAD5758C7C2CD5718D4891ED7F60EB01FE68E853B684A82F05F48916898E06B49FA065F1A277D355C8840BA3A4047C2FC68B2A286EF8859862FD5D73A56CEA2A382828465D5C535C3C40AFEA93863B024F57E87198B599977AE23B078C4CC96A; .AspNet.ApplicationCookie=32lxAa3Irq2EHESlcC-O_Nf0jn-6XChZc6fGw9ABpNgSqlgayokjpo7FsxoA-dciDn5aD8bm7QLSmfoRGsIFd7tHQj2epsbvvIM5VvSIi1D5g3dwEDXrvEevramaES6pxdF8MFToXE7dIff4Xuq-mXI7qxGZcHJqPmTxQ5DXuHdCL-1dmiJ_4cXD0twygvam6C_Wx9ItdKn0Aqg_cxIrXfAn5CthDahAkNmne-g1D8BH9XiHrxBpZVzigJfVubUHozz42rzjCRWKO_u7F9sGbRNB3m4Z3OM8UqPau1A0_ZLJ7jcyzsp4ZALWeS-sTKmwKc5HC3Ty2DPqi3puhw9n0DhQ9Ys7jjy7QhY0mHNtam2OSdjljk7Q5U9ieAAQCuVX4HxJwAU4lsyqWutoWnOOiGn6TVUCNomvJRpjrXYItS7E1HYA4PKO4I_hn8O98M32keGD7X57D6fAKYmonJnuGspaxmAlGvzVVfKQmYINtaM; ASP.NET_SessionId=g5rhvlzxkmfnekzbekxu1uzd; fn=',
+            # 'Cookie': '_ga=GA1.1.941324748.1652457584; _ga_9ZN47TBBR4=GS1.1.1652806602.4.1.1652807234.0; __RequestVerificationToken=0UcDkwTfhmkW_C_kqLEji4vHxJGsIppya2S8xi_bSsUff0-kNK3u3ZGzBLEPzVS2s61lrQz2St8shWUvPmZtjDuvW8Z1imWXWtATRugp1T81; DGAUTH=2AF89342AB5C3A1C531E373E5648A70AE169B95DCAE4B8675C631AE251F77227A4738734FA41C948E7E390B56B823A8703BAB5E1F5FC5DE00D309993CF031266A23603CAA244D2103272F47EDF40D9818E9A0EB1D9CF1A722DDFE57E9D42B59C; .AspNet.ApplicationCookie=DSCcAlIDkAnYrF1jBLqJYXY3KQ2nfnWQ_mjSHP8c_mPiREQEb1RR86TmOLayimlm4_NyaRKV0vtoCZQoAf5tOKU-58B6S5zm0rDDX4FdAR0WwnqhJbAFbWVUDcvW0x0TXOIpT8N18ZdAk07HuoWoBqD6_kbKzab0IgaGKG1790kJs-b-Ifbu0PJP7dKL8QiJ4bQX4UsXQy59UWfIsTRu7SwSjPbjKhhDaE26IlFUtIIp2d26eUenVJlelAiRXd90_cnzw9XkozH1Iv5ip21CYP4FxYj3tGA4EWez7pqdju93noKowoA130scTsF3_QS6i83yiM4ilQPwxVExgFer2iFS3rarbU8e49XKKUcTMgdkGPX-vwQNn3o1HQMjt7GhZLOwKM_bCClH-rfK1ABChWDECOnLHJ1xkd983clCoizGYjiGSIwXnyXpLwCwTDw_cSi4_7XVpV9LjqQhEHzThZ6dC7igSdNy0bab5W5-r2I; ASP.NET_SessionId=2twqlv0gzgeegplljhecibfl; fn=',
             'Origin': 'http://canmeal.ut.ac.ir',
             'Referer': 'http://canmeal.ut.ac.ir/Reserves',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36 Edg/101.0.1210.39',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36 Edg/101.0.1210.53',
             'X-Requested-With': 'XMLHttpRequest',
         }
 
@@ -73,6 +75,7 @@ class handler(BaseHTTPRequestHandler):
 
         response = requests.post('http://canmeal.ut.ac.ir/Reserves/GetReservePage',
                                  cookies=cookies, headers=headers, data=data, verify=False)
+
         print('reserve page = ' + str(response.status_code))
 
         soup = BeautifulSoup(response.text, 'html.parser')
